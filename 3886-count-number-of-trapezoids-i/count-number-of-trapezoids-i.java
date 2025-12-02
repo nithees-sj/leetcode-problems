@@ -4,7 +4,6 @@ class Solution {
     public int countTrapezoids(int[][] points) {
         Map<Integer, Integer> map = new HashMap<>();
 
-        // Count points by y-coordinate
         for (int[] p : points) {
             map.put(p[1], map.getOrDefault(p[1], 0) + 1);
         }
@@ -12,12 +11,12 @@ class Solution {
         List<Long> A = new ArrayList<>();
         for (int freq : map.values()) {
             if (freq >= 2) {
-                long c = (long) freq * (freq - 1) / 2; // number of segments at that y
+                long c = (long) freq * (freq - 1) / 2;
                 A.add(c % MOD);
             }
         }
 
-        if (A.size() < 2) return 0; // cannot form trapezoid
+        if (A.size() < 2) return 0;
 
         long S = 0, SS = 0;
 
@@ -26,11 +25,9 @@ class Solution {
             SS = (SS + (x * x) % MOD) % MOD;
         }
 
-        // Formula: (S^2 - SS) / 2
         long ans = (S * S % MOD - SS + MOD) % MOD;
 
-        // multiply by inverse of 2 mod MOD
-        long inv2 = (MOD + 1) / 2; // since MOD is prime
+        long inv2 = (MOD + 1) / 2;
         ans = ans * inv2 % MOD;
 
         return (int) ans;
