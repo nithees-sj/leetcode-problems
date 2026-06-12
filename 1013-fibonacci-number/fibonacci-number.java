@@ -1,13 +1,15 @@
 class Solution {
     public int fib(int n) {
-        return fibanoci(n);
-    }
+        int a=0;
+        int b=1;
 
-    public int fibanoci(int n){
-        if(n<=1){
-            return n;
+        if(n==0)return 0;
+        for(int i=1;i<n;i++){
+            int ans = b;
+            b=b+a;
+            a=ans;
         }
 
-        return fibanoci(n-1)+fibanoci(n-2);
+        return b;
     }
 }
