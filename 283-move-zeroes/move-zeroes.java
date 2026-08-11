@@ -11,9 +11,8 @@ class Solution {
             }
         }
         while(i<nums.length){
-            nums[i] =0;
+            nums[i] = 0;
             i++;
         }
-        System.out.print(Arrays.toString(nums));
     }
 }
