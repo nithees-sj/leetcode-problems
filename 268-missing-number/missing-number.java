@@ -1,13 +1,15 @@
-import java.util.Arrays;
 class Solution {
     public int missingNumber(int[] nums) {
-        int a=0;
-        Arrays.sort(nums);
+        int miss = 0;
+        TreeSet<Integer> set = new TreeSet<>();
         for(int i=0;i<nums.length;i++){
-            if(i!=nums[i]){
+            set.add(nums[i]);
+        }
+        for(int i=0;i<=nums.length;i++){
+            if(!set.contains(i)){
                 return i;
             }
         }
-        return nums.length;
+        return -1;
     }
 }
