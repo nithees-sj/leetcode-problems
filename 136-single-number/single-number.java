@@ -1,17 +1,11 @@
 import java.util.*;
 class Solution {
     public int singleNumber(int[] nums) {
-        HashMap<Integer,Integer> map = new HashMap<>();
+        int result = 0;
 
         for(int num:nums){
-            map.put(num,map.getOrDefault(num,0)+1);
+            result^=num;
         }
-
-        for(int i=0;i<nums.length;i++){
-            if(map.get(nums[i]) == 1){
-                return nums[i];
-            }
-        }
-        return -1;
+        return result;
     }
 }
