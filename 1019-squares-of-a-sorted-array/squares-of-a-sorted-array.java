@@ -3,20 +3,20 @@ class Solution {
         int left = 0;
         int right = nums.length-1;
         int res[] = new int[nums.length];
-        int index = nums.length-1;
-        for(int i=0;i<nums.length;i++){
-            int lsquare = nums[left]*nums[left];
-            int rsquare = nums[right]*nums[right];
 
-            if(lsquare>rsquare){
-                res[index] = lsquare;
+        for(int i=nums.length-1;i>=0;i--){
+
+            int rightSquare = nums[right]*nums[right];
+            int leftSquare = nums[left]*nums[left];
+            
+            if(leftSquare>rightSquare){
+                res[i] = leftSquare;
                 left++;
             }
             else{
-                res[index] = rsquare;
+                res[i] = rightSquare;
                 right--;
             }
-            index--;
         }
         return res;
     }
